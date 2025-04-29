@@ -23,7 +23,7 @@ export default function RegisterPage() {
         senha,
       });
       setSuccess(true);
-      setTimeout(() => navigate("/login"), 2000);
+      setTimeout(() => navigate("/"), 2000);
     } catch (err) {
       setError("Erro ao cadastrar usuário. Tente novamente.");
     }
