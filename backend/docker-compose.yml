@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: loja-livro-app 
+    ports:
+      - '3001:3001'
+    environment:
+      - MONGO_URL=mongodb://mongo-loja-livro:27017/loja-livro
+      - JWT_SECRET=segredo
+      - PORT=3001
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/app
+    restart: always
+
+  mongodb:
+    image: mongo:6
+    container_name: mongo-loja-livro
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:
